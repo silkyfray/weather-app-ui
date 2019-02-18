@@ -19,6 +19,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
+          <h2>24 Hour Weather Forecast</h2>
           <SearchContainer />
           <ResultsContainer />
         </div>
