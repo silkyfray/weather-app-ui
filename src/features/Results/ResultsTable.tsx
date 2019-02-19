@@ -1,10 +1,7 @@
 import * as React from "react";
-import {
-  CityForecast,
-  AllowedIntervals,
-  MilitaryHourToAMPMFormat
-} from "../../models/CityForecast";
+import { CityForecast, AllowedIntervals } from "../../models/CityForecast";
 import "./ResultsTable.scss";
+import { MilitaryHourToAMPMFormat } from "../../helpers/time";
 
 interface ResultsTableProps {
   cities: CityForecast[];
