@@ -1,5 +1,46 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Implementation Notes
+
+### App Structure
+
+The files are structured by nature
+
+```
+- src
+  - actions - file per domain concern
+  - api - files for interfacing with the api
+    - types - api types
+  - features - UI components and containers
+  - models - state interfaces
+  - reducers - file per domain concern
+  - sagas - file per domain concern
+```
+
+Test files live beside the functionality their are testing.
+
+### Unit Tests
+
+Two tests were written:
+
+- The presentational table renders the appropriate number of rows and columns
+- The fetch saga correctly maps the response type to the state type
+
+### Assumptions Made
+
+- if a city is already in the table then remove the current one and put it again at the top of the table
+- the average temp of the min and max is taken
+
+### Possible Improvements
+
+- Group files by function. Common Closure Principle
+- Action creators
+- linting
+- Loader spinner
+- Move error UI state out of Forecast state
+- Use immutable js to make sure the state is not directly modified
+- More tests
+
 ## Available Scripts
 
 In the project directory, you can run:
