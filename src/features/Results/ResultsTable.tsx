@@ -4,6 +4,7 @@ import {
   AllowedIntervals,
   MilitaryHourToAMPMFormat
 } from "../../models/CityForecast";
+import "./ResultsTable.scss";
 
 interface ResultsTableProps {
   cities: CityForecast[];
@@ -11,7 +12,7 @@ interface ResultsTableProps {
 
 const ResultsTable: React.FunctionComponent<ResultsTableProps> = props => {
   return (
-    <table>
+    <table className="ResultTable">
       <thead>
         <tr>
           <th>Cities</th>
