@@ -24,7 +24,7 @@ const ResultsTable: React.FunctionComponent<ResultsTableProps> = props => {
       <tbody>
         {props.cities.map((city, index) => {
           return (
-            <tr key={index}>
+            <tr key={index} className="ResultTable__row">
               <th>
                 {city.name}
                 {","}
@@ -32,7 +32,7 @@ const ResultsTable: React.FunctionComponent<ResultsTableProps> = props => {
               </th>
               {city.hourIntervals.map((hour, index) => {
                 return (
-                  <td key={index}>
+                  <td key={index} className="ResultTable__col">
                     {Math.trunc(hour.tempCelcius)}
                     {" C"}
                   </td>
