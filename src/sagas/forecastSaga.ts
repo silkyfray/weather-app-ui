@@ -1,10 +1,10 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { FetchCity24HourForecast } from "../api/cityService";
 import { ForecastFetchType, ForecastFetchAction } from "../actions/forecast";
-import { OwnWeatherResponse as OwmWeatherResponse } from "../api/types/OwmResponse";
+import { OwmWeatherResponse } from "../api/types/OwmResponse";
 import { AllowedIntervals, CityForecast } from "../models/CityForecast";
 
-function owmResponseToCityForecast(owmResponse: OwmWeatherResponse) {
+export function owmResponseToCityForecast(owmResponse: OwmWeatherResponse) {
   const result: CityForecast = {
     name: owmResponse.city.name,
     country: owmResponse.city.country,
@@ -33,11 +33,10 @@ function owmResponseToCityForecast(owmResponse: OwmWeatherResponse) {
         w1.interval < w2.interval ? -1 : w1.interval === w2.interval ? 0 : 1
       )
   };
-  console.log(result);
   return result;
 }
 
-function* FetchCityForecast(action: ForecastFetchAction) {
+export function* FetchCityForecast(action: ForecastFetchAction) {
   try {
     const ownResponse: OwmWeatherResponse = yield call(
       FetchCity24HourForecast,
