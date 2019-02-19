@@ -50,8 +50,7 @@ export function* FetchCityForecast(action: ForecastFetchAction) {
   } catch (e) {
     yield put({
       type: ForecastFetchType.FORECAST_FETCH_FAILED,
-      message: e.message,
-      name: e.message
+      name: action.name
     } as ForecastFetchAction);
   }
 }

@@ -10,5 +10,4 @@ export interface ForecastFetchAction {
   type: ForecastFetchType;
   name: string;
   cityForecast?: CityForecast;
-  message?: string;
 }
