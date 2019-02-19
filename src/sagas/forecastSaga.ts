@@ -22,8 +22,9 @@ function owmResponseToCityForecast(owmResponse: OwmWeatherResponse) {
         // take the average temp between min and max
         return {
           tempCelcius:
-            filteredWeatherParam.main.temp_max +
-            filteredWeatherParam.main.temp_min / 2,
+            (filteredWeatherParam.main.temp_max +
+              filteredWeatherParam.main.temp_min) /
+            2,
           interval: time.getHours()
         };
       })
