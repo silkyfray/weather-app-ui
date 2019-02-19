@@ -57,7 +57,7 @@ export interface City {
   population: number;
 }
 
-export interface OwnWeatherResponse {
+export interface OwmWeatherResponse {
   cod: string;
   message: number;
   cnt: number;
