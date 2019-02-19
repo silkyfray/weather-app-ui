@@ -1,4 +1,4 @@
-import { HourForecast, CityForecast } from "../models/CityForecast";
+import { CityForecast } from "../models/CityForecast";
 
 export enum ForecastFetchType {
   FORECAST_FETCH_REQUESTED = "FORECAST_FETCH_REQUESTED",

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Dispatch, AnyAction } from "redux";
+import { Dispatch } from "redux";
 import { ForecastFetchType, ForecastFetchAction } from "../../actions/forecast";
 import { connect } from "react-redux";
 

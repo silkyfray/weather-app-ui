@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { CityForecast, ForecastState } from "../models/CityForecast";
+import { ForecastState } from "../models/CityForecast";
 import { ForecastFetchAction, ForecastFetchType } from "../actions/forecast";
 
 const initialState: ForecastState = {
@@ -14,9 +14,12 @@ export const forecastReducer: Reducer<ForecastState, ForecastFetchAction> = (
   switch (action.type) {
     case ForecastFetchType.FORECAST_FETCH_SUCCEEDED:
       if (action.cityForecast) {
-        const cityName = action.cityForecast.name;
+        const cityAndCountry =
+          action.cityForecast.name + action.cityForecast.country;
         // remove city if already there
-        let cities = state.cities.filter(city => city.name !== cityName);
+        let cities = state.cities.filter(
+          city => city.name + city.country !== cityAndCountry
+        );
         // prepend so it display at top
         cities.unshift(action.cityForecast);
         return { cities };

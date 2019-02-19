@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import AppState from "../../models/AppState";
 import { CityForecast } from "../../models/CityForecast";
+import ResultsTable from "./ResultsTable";
 
 interface StateProps {
   cities: CityForecast[];
@@ -12,11 +13,7 @@ type ResultsContainerProps = StateProps;
 function ResultsContainer(props: ResultsContainerProps) {
   return (
     <div>
-      <ul>
-        {props.cities.map((city, index) => {
-          return <li key={index}>{city.name}</li>;
-        })}
-      </ul>
+      <ResultsTable cities={props.cities} />
     </div>
   );
 }
