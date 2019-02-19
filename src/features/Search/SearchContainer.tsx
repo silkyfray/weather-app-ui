@@ -2,12 +2,19 @@ import * as React from "react";
 import { Dispatch } from "redux";
 import { ForecastFetchType, ForecastFetchAction } from "../../actions/forecast";
 import { connect } from "react-redux";
+import AppState from "../../models/AppState";
+import "./SearchContainer.scss";
 
 interface DispatchProps {
   requestForecast: any;
 }
 
-type SearchContainerProps = DispatchProps;
+interface StateProps {
+  hasError: boolean;
+  lastSearchText: string;
+}
+
+type SearchContainerProps = StateProps & DispatchProps;
 
 export interface SearchContainerState {
   searchText: string;
@@ -32,18 +39,30 @@ class SearchContainer extends React.Component<
   };
 
   public render() {
+    const { hasError, lastSearchText } = this.props;
+    const { searchText } = this.state;
     return (
-      <div>
+      <div className="SearchContainer">
         <input
           placeholder="Search a city"
-          value={this.state.searchText}
+          value={searchText}
           onChange={this.handleInputChange}
         />
         <button onClick={this.handleButtonClick}>Search</button>
+        <div className="SearchContainer__error">
+          {hasError && `Could not find forecast for ${lastSearchText}`}
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state: AppState): StateProps => {
+  return {
+    hasError: state.forecast.hasError,
+    lastSearchText: state.forecast.lastSearchText
+  };
+};
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   requestForecast: (searchText: string) =>
@@ -54,6 +73,6 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SearchContainer);

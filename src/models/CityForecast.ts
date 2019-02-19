@@ -20,4 +20,6 @@ export interface CityForecast {
 
 export interface ForecastState {
   cities: CityForecast[];
+  hasError: boolean;
+  lastSearchText: string;
 }

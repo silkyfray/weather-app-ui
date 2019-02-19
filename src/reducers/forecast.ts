@@ -3,7 +3,9 @@ import { ForecastState } from "../models/CityForecast";
 import { ForecastFetchAction, ForecastFetchType } from "../actions/forecast";
 
 const initialState: ForecastState = {
-  cities: []
+  cities: [],
+  hasError: false,
+  lastSearchText: ""
 };
 
 export const forecastReducer: Reducer<ForecastState, ForecastFetchAction> = (
@@ -20,13 +22,15 @@ export const forecastReducer: Reducer<ForecastState, ForecastFetchAction> = (
         let cities = state.cities.filter(
           city => city.name + city.country !== cityAndCountry
         );
-        // prepend so it display at top
+        // prepend so it displays at top
         cities.unshift(action.cityForecast);
-        return { cities };
+        return { ...state, cities };
       }
 
-    case ForecastFetchType.FORECAST_FETCH_REQUESTED:
     case ForecastFetchType.FORECAST_FETCH_FAILED:
+      return { ...state, hasError: true, lastSearchText: action.name };
+    case ForecastFetchType.FORECAST_FETCH_REQUESTED:
+      return { ...state, hasError: false, lastSearchText: action.name };
     default:
       return state;
   }
